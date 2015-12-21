@@ -78,6 +78,8 @@ See the accompanying license.txt file for applicable licenses.
     <xsl:import href="../../cfg/fo/attrs/reference-elements-attr.xsl"/>
     <xsl:import href="reference-elements.xsl"/>
 
+    <xsl:import href="svg-domain.xsl"/>
+
     <xsl:import href="../../cfg/fo/attrs/sw-domain-attr.xsl"/>
     <xsl:import href="sw-domain.xsl"/>
     <xsl:import href="../../cfg/fo/attrs/pr-domain-attr.xsl"/>

@@ -309,4 +309,8 @@ See the accompanying license.txt file for applicable licenses.
 
     <xsl:template match="*[contains(@class, ' map/reltable ')]" mode="build-tree"/>
 
+  <xsl:template match="*[contains(@class, ' topic/foreign ')]//node()" mode="#all">
+    <xsl:sequence select="."/>
+  </xsl:template>
+
 </xsl:stylesheet>

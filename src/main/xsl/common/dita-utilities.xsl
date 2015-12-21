@@ -385,13 +385,19 @@
 
   <xsl:function name="dita-ot:resolve-href-path" as="xs:anyURI">
     <xsl:param name="href" as="attribute(href)"/>
-
-    <xsl:variable name="source" as="xs:anyURI" select="base-uri($href)"/>
+    <xsl:param name="source" as="xs:anyURI"/>
 
     <xsl:sequence
       select="if (starts-with($href, '#'))
             then $source
             else resolve-uri(tokenize($href, '#')[1], $source)"/>
+  </xsl:function>
+
+  <xsl:function name="dita-ot:resolve-href-path" as="xs:anyURI">
+    <xsl:param name="href" as="attribute(href)"/>
+
+    <xsl:sequence
+      select="dita-ot:resolve-href-path($href, base-uri($href))"/>
   </xsl:function>
 
   <xsl:function name="dita-ot:get-topic-id" as="xs:string?">
@@ -443,9 +449,10 @@
 
   <xsl:function name="dita-ot:retrieve-href-target" as="node()?">
     <xsl:param name="href" as="attribute(href)"/>
+    <xsl:param name="source" as="xs:anyURI"/>
 
     <xsl:variable name="doc" as="document-node()"
-      select="doc(dita-ot:resolve-href-path($href))"/>
+      select="doc(dita-ot:resolve-href-path($href, $source))"/>
 
     <xsl:sequence
       select="if (dita-ot:has-element-id($href))
@@ -454,6 +461,13 @@
             else if (dita-ot:has-topic-id($href) and not(dita-ot:has-element-id($href)))
                then key('id', dita-ot:get-topic-id($href), $doc)
             else $doc"/>
+  </xsl:function>
+
+  <xsl:function name="dita-ot:retrieve-href-target" as="node()?">
+    <xsl:param name="href" as="attribute(href)"/>
+
+    <xsl:sequence
+      select="dita-ot:retrieve-href-target($href, base-uri($href))"/>
   </xsl:function>
 
   <xsl:template name="dita-ot:normalize-uri" as="xs:string">
