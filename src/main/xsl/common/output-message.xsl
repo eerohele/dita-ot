@@ -25,6 +25,7 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   
   <xsl:template name="output-message">
+    <xsl:param name="ctx" select="." tunnel="yes"/>
     <xsl:param name="msg" select="'***'"/>
     <xsl:param name="msgcat" select="$msgprefix"/>
     <xsl:param name="msgnum" select="'000'"/>
@@ -50,16 +51,18 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="localclass" select="@class"/>
+    <xsl:variable name="xtrf" select="$ctx/@xtrf" as="attribute(xtrf)"/>
+    <xsl:variable name="xtrc" select="$ctx/@xtrc" as="attribute(xtrc)"/>
     <xsl:variable name="debugloc">
-      <xsl:if test="@xtrf | @xtrc">
-        <xsl:if test="@xtrf">
-          <xsl:value-of select="@xtrf"/>
+      <xsl:if test="$xtrf | $xtrc">
+        <xsl:if test="$xtrf">
+          <xsl:value-of select="$xtrf"/>
         </xsl:if>
-        <xsl:if test="@xtrf and @xtrc">
+        <xsl:if test="$xtrf and $xtrc">
           <xsl:text>:</xsl:text>
         </xsl:if>
-        <xsl:if test="@xtrc">
-          <xsl:value-of select="if (contains(@xtrc, ';')) then substring-after(@xtrc, ';') else @xtrc"/>
+        <xsl:if test="$xtrc">
+          <xsl:value-of select="if (contains($xtrc, ';')) then substring-after($xtrc, ';') else $xtrc"/>
         </xsl:if>
         <xsl:text>: </xsl:text>
       </xsl:if>
