@@ -22,7 +22,7 @@ class UserInterfaceDomain extends Html5Specification {
                 <span class="uicontrol">bar</span>
             </span>
         )
-    }
+    }.pendingUntilFixed("https://github.com/dita-ot/dita-ot/issues/2446")
 
     "Screen" >> {
         applying {
