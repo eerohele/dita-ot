@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+
+<topic id="topic">
+    <title/>
+
+    <body>
+        <table xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot">
+            <tgroup cols="2">
+                <colspec colname="c1"/>
+                <colspec colname="c2"/>
+                <tbody>
+                    <row>
+                        <entry colname="c1" dita-ot:x="1" dita-ot:y="1"/>
+                        <entry colname="c2" dita-ot:x="2" dita-ot:y="1"/>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </body>
+</topic>
