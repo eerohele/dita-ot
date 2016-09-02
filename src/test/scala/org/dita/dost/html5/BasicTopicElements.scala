@@ -11,7 +11,6 @@ class BasicTopicElements extends Html5Specification {
         )
     }
 
-
     "Abstract" >> {
         "without short description" in {
             applying {
