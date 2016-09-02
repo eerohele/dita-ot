@@ -1,9 +1,11 @@
 package org.dita.dost.html5
 
 class UserInterfaceDomain extends Html5Specification {
+    override val inputSchema = getSchema("technicalContent/xsd/topic.xsd")
+
     "User interface control" >> {
         applying {
-            <uicontrol class=" - ui-d/uicontrol "> ... </uicontrol>
+            <uicontrol> ... </uicontrol>
         } must produce(
             <span class="uicontrol"> ... </span>
         )
@@ -11,9 +13,9 @@ class UserInterfaceDomain extends Html5Specification {
 
     "Menu cascade" >> {
         applying {
-            <menucascade class=" - ui-d/menucascade " xml:lang="en">
-                <uicontrol class=" - ui-d/uicontrol ">foo</uicontrol>
-                <uicontrol class=" - ui-d/uicontrol ">bar</uicontrol>
+            <menucascade xml:lang="en">
+                <uicontrol>foo</uicontrol>
+                <uicontrol>bar</uicontrol>
             </menucascade>
         } must produce(
             <span class="menucascade" lang="en">
@@ -26,19 +28,19 @@ class UserInterfaceDomain extends Html5Specification {
 
     "Screen" >> {
         applying {
-            <screen class=" - ui-d/screen " id="screen" scale="90"> ... </screen>
+            <screen id="screen" scale="90"> ... </screen>
         } must produce(<pre id="screen" class="screen scale-90"> ... </pre>)
     }
 
     "Shortcut" >> {
         applying {
-            <shortcut class="- ui-d/shortcut "> ... </shortcut>
+            <shortcut> ... </shortcut>
         } must produce(<span class="shortcut"> ... </span>)
     }
 
     "Window title" >> {
         applying {
-            <wintitle class="- ui-d/wintitle "> ... </wintitle>
+            <wintitle> ... </wintitle>
         } must produce(<span class="wintitle"> ... </span>)
     }
 }

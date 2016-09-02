@@ -1,9 +1,11 @@
 package org.dita.dost.html5
 
 class SoftwareDomain extends Html5Specification {
+    override val inputSchema = getSchema("technicalContent/xsd/topic.xsd")
+
     "Message phrase" >> {
         applying {
-            <msgph class="- sw-d/msgph "> ... </msgph>
+            <msgph> ... </msgph>
         } must produce(
             <samp class="msgph"> ... </samp>
         )
@@ -12,7 +14,7 @@ class SoftwareDomain extends Html5Specification {
     "Message block" >> {
         "without child elements" in {
             applying {
-                <msgblock class="- sw-d/msgblock ">
+                <msgblock>
                 A:1 foo
                 B:2 bar
                 C:3 baz
@@ -28,10 +30,10 @@ class SoftwareDomain extends Html5Specification {
 
         "with child elements" in {
             applying {
-                <msgblock class="- sw-d/msgblock ">
-                    <msgnum class="- sw-d/msgnum ">A:1</msgnum><msgph class="- sw-d/msgph ">foo</msgph>
-                    <msgnum class="- sw-d/msgnum ">B:2</msgnum><msgph class="- sw-d/msgph ">bar</msgph>
-                    <msgnum class="- sw-d/msgnum ">C:3</msgnum><msgph class="- sw-d/msgph ">baz</msgph>
+                <msgblock>
+                    <msgnum>A:1</msgnum><msgph>foo</msgph>
+                    <msgnum>B:2</msgnum><msgph>bar</msgph>
+                    <msgnum>C:3</msgnum><msgph>baz</msgph>
                 </msgblock>
             } must produce(
                 <pre class="msgblock">
@@ -45,7 +47,7 @@ class SoftwareDomain extends Html5Specification {
 
     "Command name" >> {
         applying {
-            <cmdname class="- sw-d/cmdname "> ... </cmdname>
+            <cmdname> ... </cmdname>
         } must produce(
             <span class="cmdname"> ... </span>
         )
@@ -53,7 +55,7 @@ class SoftwareDomain extends Html5Specification {
 
     "Variable name" >> {
         applying {
-            <varname class="- sw-d/varname "> ... </varname>
+            <varname> ... </varname>
         } must produce(
             <var class="varname"> ... </var>
         )
@@ -61,7 +63,7 @@ class SoftwareDomain extends Html5Specification {
 
     "File path" >> {
         applying {
-            <filepath class="- sw-d/filepath "> ... </filepath>
+            <filepath> ... </filepath>
         } must produce(
             <span class="filepath"> ... </span>
         )
@@ -69,7 +71,7 @@ class SoftwareDomain extends Html5Specification {
 
     "User input" >> {
         applying {
-            <userinput class="- sw-d/userinput "> ... </userinput>
+            <userinput> ... </userinput>
         } must produce(
             <kbd class="userinput"> ... </kbd>
         )
@@ -77,7 +79,7 @@ class SoftwareDomain extends Html5Specification {
 
     "System output" >> {
         applying {
-            <systemoutput class="- sw-d/systemoutput "> ... </systemoutput>
+            <systemoutput> ... </systemoutput>
         } must produce(
             <samp class="systemoutput"> ... </samp>
         )

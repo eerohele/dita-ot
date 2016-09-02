@@ -1,10 +1,12 @@
 package org.dita.dost.html5
 
 class BodyElements extends Html5Specification {
+    override val inputSchema = getSchema("technicalContent/xsd/topic.xsd")
+
     "Alternate text" >> {
         applying {
-            <image class="- topic/image " href="foo.svg">
-                <alt class="- topic/alt "> ... </alt>
+            <image href="foo.svg">
+                <alt> ... </alt>
             </image>
         } must produce(
             <img class="image" src="foo.svg" alt=" ... "/>
@@ -13,7 +15,7 @@ class BodyElements extends Html5Specification {
 
     "Bibliographic citation" >> {
         applying {
-            <cite class="- topic/cite "> ... </cite>
+            <cite> ... </cite>
         } must produce(
             <cite class="cite"> ... </cite>
         )
@@ -22,10 +24,10 @@ class BodyElements extends Html5Specification {
     "Definition list" >> {
         "simple definition list" in {
             applying {
-                <dl class="- topic/dl ">
-                    <dlentry class="- topic/dlentry ">
-                        <dt class="- topic/dt ">dt</dt>
-                        <dd class="- topic/dd ">dd</dd>
+                <dl>
+                    <dlentry>
+                        <dt>dt</dt>
+                        <dd>dd</dd>
                     </dlentry>
                 </dl>
             } must produce(
@@ -38,14 +40,14 @@ class BodyElements extends Html5Specification {
 
         "definition list with a heading" in {
             applying {
-                <dl class="- topic/dl ">
-                    <dlhead class="- topic/dlhead ">
-                        <dthd class="- topic/dthd ">dthd</dthd>
-                        <ddhd class="- topic/ddhd ">ddhd</ddhd>
+                <dl>
+                    <dlhead>
+                        <dthd>dthd</dthd>
+                        <ddhd>ddhd</ddhd>
                     </dlhead>
-                    <dlentry class="- topic/dlentry ">
-                        <dt class="- topic/dt ">dt</dt>
-                        <dd class="- topic/dd ">dd</dd>
+                    <dlentry>
+                        <dt>dt</dt>
+                        <dd>dd</dd>
                     </dlentry>
                 </dl>
             } must produce(
@@ -65,7 +67,7 @@ class BodyElements extends Html5Specification {
 
     "Draft comment" should {
         val draftComment =
-            <draft-comment class="- topic/draft-comment " author="Jane Doe" time="2016-08-31" disposition="Open">
+            <draft-comment author="Jane Doe" time="2016-08-31" disposition="Open">
                 draft-comment
             </draft-comment>
 

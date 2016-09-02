@@ -1,24 +1,22 @@
 package org.dita.dost.html5
 
 class TaskElements extends Html5Specification {
+    override val inputSchema = getSchema("technicalContent/xsd/task.xsd")
+
     val cmd = <cmd class="- topic/ph task/cmd "> ... </cmd>
     val paragraph = <p class="- topic/p "> ... </p>
 
     "Task body" >> {
         applying {
-            <taskbody class="- topic/body task/taskbody " id="taskbody">
-                {paragraph}
-            </taskbody>
+            <taskbody id="taskbody"/>
         } must produce(
-            <div class="body taskbody" id="taskbody">
-                <p class="p"> ... </p>
-            </div>
+            <div class="body taskbody" id="taskbody"/>
         )
     }
 
     "Prerequisites" >> {
         applying {
-            <prereq class="- topic/section task/prereq " id="prereq">
+            <prereq id="prereq">
                 {paragraph}
             </prereq>
         } must produce(
@@ -30,7 +28,7 @@ class TaskElements extends Html5Specification {
 
     "Context" >> {
         applying {
-            <context class="- topic/section task/context " id="context">
+            <context id="context">
                 {paragraph}
             </context>
         } must produce(
@@ -42,8 +40,8 @@ class TaskElements extends Html5Specification {
 
     "Steps" >> {
         applying {
-            <steps class="- topic/ol task/steps ">
-                <step class="- topic/li task/step ">
+            <steps>
+                <step>
                     { cmd }
                 </step>
             </steps>
@@ -59,7 +57,7 @@ class TaskElements extends Html5Specification {
     "Step" >> {
         "optional" in {
             applying {
-                <step class="- topic/li task/step " importance="optional">
+                <step importance="optional">
                     { cmd }
                 </step>
             } must produce(
@@ -71,7 +69,7 @@ class TaskElements extends Html5Specification {
 
         "required" in {
             applying {
-                <step class="- topic/li task/step " importance="required">
+                <step importance="required">
                     { cmd }
                 </step>
             } must produce(
@@ -84,7 +82,7 @@ class TaskElements extends Html5Specification {
 
     "Step section" >> {
         applying {
-            <stepsection class="- topic/li task/stepsection "> ... </stepsection>
+            <stepsection> ... </stepsection>
         } must produce(
             <li class="li stepsection"> ... </li>
         )

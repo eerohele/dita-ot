@@ -1,9 +1,11 @@
 package org.dita.dost.html5
 
 class BasicTopicElements extends Html5Specification {
+    override val inputSchema = getSchema("technicalContent/xsd/topic.xsd")
+
     "Short description" >> {
         applying {
-            <shortdesc class="- topic/shortdesc "> ... </shortdesc>
+            <shortdesc> ... </shortdesc>
         } must produce(
             <p class="shortdesc"> ... </p>
         )
@@ -13,7 +15,7 @@ class BasicTopicElements extends Html5Specification {
     "Abstract" >> {
         "without short description" in {
             applying {
-                <abstract class="- topic/abstract "> ... </abstract>
+                <abstract> ... </abstract>
             } must produce(
                 <div class="abstract"> ... </div>
             )
@@ -21,9 +23,9 @@ class BasicTopicElements extends Html5Specification {
 
         "with phrase-level short description" in {
             applying {
-                <abstract class="- topic/abstract ">
+                <abstract>
                     foo
-                    <shortdesc class="- topic/shortdesc ">shortdesc</shortdesc>
+                    <shortdesc>shortdesc</shortdesc>
                     bar
                 </abstract>
             } must produce(
@@ -37,10 +39,10 @@ class BasicTopicElements extends Html5Specification {
 
         "with block-level short description" in {
             applying {
-                <abstract class="- topic/abstract ">
-                    <p class="- topic/p ">foo</p>
-                    <shortdesc class="- topic/shortdesc ">shortdesc</shortdesc>
-                    <p class="- topic/p ">bar</p>
+                <abstract>
+                    <p>foo</p>
+                    <shortdesc>shortdesc</shortdesc>
+                    <p>bar</p>
                 </abstract>
             } must produce(
                 <div class="abstract">
@@ -54,15 +56,15 @@ class BasicTopicElements extends Html5Specification {
 
     "Body" >> {
         applying {
-            <body class="- topic/body "> ... </body>
+            <body/>
         } must produce(
-            <div class="body"> ... </div>
+            <div class="body"/>
         )
     }
 
     "Bodydiv" >> {
         applying {
-            <bodydiv class="- topic/bodydiv "> ... </bodydiv>
+            <bodydiv> ... </bodydiv>
         } must produce(
             <div class="bodydiv"> ... </div>
         )
@@ -70,9 +72,9 @@ class BasicTopicElements extends Html5Specification {
 
     "Related links" >> {
         applying {
-            <related-links class="- topic/related-links " scope="external" format="html">
-                <link class="- topic/link " href="http://www.example.org">
-                    <linktext class="- topic/linktext ">Example 1</linktext>
+            <related-links scope="external" format="html">
+                <link href="http://www.example.org">
+                    <linktext>Example 1</linktext>
                 </link>
             </related-links>
         } must produce(
