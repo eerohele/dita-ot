@@ -6,18 +6,18 @@ class BasicTopicElements extends Html5Specification {
     "Short description" >> {
         applying {
             <shortdesc> ... </shortdesc>
-        } must produce(
+        } must produce {
             <p class="shortdesc"> ... </p>
-        )
+        }
     }
 
     "Abstract" >> {
         "without short description" in {
             applying {
                 <abstract> ... </abstract>
-            } must produce(
+            } must produce {
                 <div class="abstract"> ... </div>
-            )
+            }
         }
 
         "with phrase-level short description" in {
@@ -27,13 +27,13 @@ class BasicTopicElements extends Html5Specification {
                     <shortdesc>shortdesc</shortdesc>
                     bar
                 </abstract>
-            } must produce(
+            } must produce {
                 <div class="abstract">
                     foo
                     <span class="shortdesc">shortdesc</span>
                     bar
                 </div>
-            )
+            }
         }
 
         "with block-level short description" in {
@@ -43,30 +43,26 @@ class BasicTopicElements extends Html5Specification {
                     <shortdesc>shortdesc</shortdesc>
                     <p>bar</p>
                 </abstract>
-            } must produce(
+            } must produce {
                 <div class="abstract">
                     <p class="p">foo</p>
                     <p class="shortdesc">shortdesc</p>
                     <p class="p">bar</p>
                 </div>
-            )
+            }
         }
     }
 
     "Body" >> {
-        applying {
-            <body/>
-        } must produce(
-            <div class="body"/>
-        )
+        applying { <body/> } must produce { <div class="body"/> }
     }
 
     "Bodydiv" >> {
         applying {
             <bodydiv> ... </bodydiv>
-        } must produce(
+        } must produce {
             <div class="bodydiv"> ... </div>
-        )
+        }
     }
 
     "Related links" >> {
@@ -76,7 +72,7 @@ class BasicTopicElements extends Html5Specification {
                     <linktext>Example 1</linktext>
                 </link>
             </related-links>
-        } must produce(
+        } must produce {
             <nav class="related-links" role="navigation">
                 <h1>Related information</h1>
                 <ul class="linklist relinfo">
@@ -85,7 +81,7 @@ class BasicTopicElements extends Html5Specification {
                     </li>
                 </ul>
             </nav>
-        )
+        }
     }
 
 }

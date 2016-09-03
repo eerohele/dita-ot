@@ -32,7 +32,7 @@ class Table extends Html5Specification {
     }
 
     "Regular table" >> {
-        applying(table(row)) must produce(
+        applying(table(row)) must produce {
             <table class="table" id="table">
                 <caption/>
                 <colgroup>
@@ -46,7 +46,7 @@ class Table extends Html5Specification {
                     </tr>
                 </tbody>
             </table>
-        )
+        }
     }
 
     "rowspan" >> {
@@ -57,12 +57,12 @@ class Table extends Html5Specification {
                     <entry class="- topic/entry " colname="c2" dita-ot:x="1"/>
                 </row>
             )
-        ) must produce(
+        ) must produce {
             <tr class="row">
                 <td class="entry" rowspan="2"/>
                 <td class="entry"/>
             </tr>
-        )
+        }
     }
 
     "colspan" >> {
@@ -72,11 +72,11 @@ class Table extends Html5Specification {
                     <entry class="- topic/entry " colname="c1" dita-ot:morecols="1" dita-ot:x="1"/>
                 </row>
             )
-        ) must produce(
+        ) must produce {
             <tr class="row">
                 <td class="entry" colspan="2"/>
             </tr>
-        )
+        }
     }
 
     "@rowheader" >> {
@@ -103,22 +103,22 @@ class Table extends Html5Specification {
     }
 
     "complex table" >> {
-        applying("topic/body/table")(
+        applying("topic/body/table") {
             Loader.load(new File(testDir, "complexTable.dita"))
-        ) must produce(<table/>)
+        } must produce { <table/> }
     }.pendingUntilFixed
 
     "dita-ot:get-current-table" should {
         "work when given table" in {
             callingFunction("get-current-table")(
                 element(table(row))
-            ) must produce(table(row))
+            ) must produce { table(row) }
         }
 
         "work when given row" in {
             callingFunction("get-current-table")(
                 XPath.select("tgroup/tbody/row")(element(table(row)))
-            ) must produce(table(row))
+            ) must produce { table(row) }
         }
 
         "work when given nested table" in {
@@ -134,7 +134,7 @@ class Table extends Html5Specification {
                         )
                     )
                 )
-            ) must produce(table(row, "table2"))
+            ) must produce { table(row, "table2") }
         }
     }
 }

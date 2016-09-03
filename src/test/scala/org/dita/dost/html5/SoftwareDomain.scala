@@ -6,9 +6,9 @@ class SoftwareDomain extends Html5Specification {
     "Message phrase" >> {
         applying {
             <msgph> ... </msgph>
-        } must produce(
+        } must produce {
             <samp class="msgph"> ... </samp>
-        )
+        }
     }
 
     "Message block" >> {
@@ -19,13 +19,13 @@ class SoftwareDomain extends Html5Specification {
                 B:2 bar
                 C:3 baz
                 </msgblock>
-            } must produce(
+            } must produce {
                 <pre class="msgblock">
                 A:1 foo
                 B:2 bar
                 C:3 baz
                 </pre>
-            )
+            }
         }
 
         "with child elements" in {
@@ -35,54 +35,53 @@ class SoftwareDomain extends Html5Specification {
                     <msgnum>B:2</msgnum><msgph>bar</msgph>
                     <msgnum>C:3</msgnum><msgph>baz</msgph>
                 </msgblock>
-            } must produce(
+            } must produce {
                 <pre class="msgblock">
                     <span class="msgnum">A:1</span><samp class="msgph">foo</samp>
                     <span class="msgnum">B:2</span><samp class="msgph">bar</samp>
                     <span class="msgnum">C:2</span><samp class="msgph">baz</samp>
                 </pre>
-            )
+            }
         }
     }
 
     "Command name" >> {
         applying {
             <cmdname> ... </cmdname>
-        } must produce(
+        } must produce{
             <span class="cmdname"> ... </span>
-        )
+        }
     }
 
     "Variable name" >> {
         applying {
             <varname> ... </varname>
-        } must produce(
+        } must produce {
             <var class="varname"> ... </var>
-        )
+        }
     }
 
     "File path" >> {
         applying {
             <filepath> ... </filepath>
-        } must produce(
+        } must produce {
             <span class="filepath"> ... </span>
-        )
+        }
     }
 
     "User input" >> {
         applying {
             <userinput> ... </userinput>
-        } must produce(
+        } must produce {
             <kbd class="userinput"> ... </kbd>
-        )
+        }
     }
 
     "System output" >> {
         applying {
             <systemoutput> ... </systemoutput>
-        } must produce(
+        } must produce {
             <samp class="systemoutput"> ... </samp>
-        )
+        }
     }
-
 }

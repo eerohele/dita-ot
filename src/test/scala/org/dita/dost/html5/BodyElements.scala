@@ -8,17 +8,17 @@ class BodyElements extends Html5Specification {
             <image href="foo.svg">
                 <alt> ... </alt>
             </image>
-        } must produce(
+        } must produce {
             <img class="image" src="foo.svg" alt=" ... "/>
-        )
+        }
     }
 
     "Bibliographic citation" >> {
         applying {
             <cite> ... </cite>
-        } must produce(
+        } must produce {
             <cite class="cite"> ... </cite>
-        )
+        }
     }
 
     "Definition list" >> {
@@ -30,12 +30,12 @@ class BodyElements extends Html5Specification {
                         <dd>dd</dd>
                     </dlentry>
                 </dl>
-            } must produce(
+            } must produce {
                 <dl class="dl">
                    <dt class="dt dlterm">dt</dt>
                    <dd class="dd">dd</dd>
                 </dl>
-            )
+            }
         }
 
         "definition list with a heading" in {
@@ -50,7 +50,7 @@ class BodyElements extends Html5Specification {
                         <dd>dd</dd>
                     </dlentry>
                 </dl>
-            } must produce(
+            } must produce {
                 <dl class="dl">
                     <dt class="dthd">
                         <strong>dthd</strong>
@@ -61,7 +61,7 @@ class BodyElements extends Html5Specification {
                     <dt class="dt dlterm">dt</dt>
                     <dd class="dd">dd</dd>
                 </dl>
-            )
+            }
         }
     }
 
@@ -73,7 +73,7 @@ class BodyElements extends Html5Specification {
 
         "when draft mode is enabled" in {
             applying(draftComment)
-                .withStylesheetParameters("DRAFT" -> "yes") must produce(
+                .withStylesheetParameters("DRAFT" -> "yes") must produce {
                 <div class="draft-comment">
                     <header>
                         <h1>Draft comment</h1>
@@ -83,7 +83,7 @@ class BodyElements extends Html5Specification {
 
                     draft-comment
                 </div>
-            )
+            }
         }
 
         "when draft mode is disabled" in {
@@ -91,5 +91,4 @@ class BodyElements extends Html5Specification {
                 .withStylesheetParameters("DRAFT" -> "no").result must beEmpty
         }
     }
-
 }

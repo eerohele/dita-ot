@@ -9,9 +9,9 @@ class TaskElements extends Html5Specification {
     "Task body" >> {
         applying {
             <taskbody id="taskbody"/>
-        } must produce(
+        } must produce {
             <div class="body taskbody" id="taskbody"/>
-        )
+        }
     }
 
     "Prerequisites" >> {
@@ -19,11 +19,11 @@ class TaskElements extends Html5Specification {
             <prereq id="prereq">
                 {paragraph}
             </prereq>
-        } must produce(
+        } must produce {
             <section class="section prereq" id="prereq">
                 <p class="p"> ... </p>
             </section>
-        )
+        }
     }
 
     "Context" >> {
@@ -31,11 +31,11 @@ class TaskElements extends Html5Specification {
             <context id="context">
                 {paragraph}
             </context>
-        } must produce(
+        } must produce {
             <section class="section context" id="context">
                 <p class="p"> ... </p>
             </section>
-        )
+        }
     }
 
     "Steps" >> {
@@ -45,13 +45,13 @@ class TaskElements extends Html5Specification {
                     { cmd }
                 </step>
             </steps>
-        } must produce(
+        } must produce {
             <ol class="ol steps">
                 <li class="li step">
                     <span class="ph cmd"> ... </span>
                 </li>
             </ol>
-        )
+        }
     }
 
     "Step" >> {
@@ -60,11 +60,11 @@ class TaskElements extends Html5Specification {
                 <step importance="optional">
                     { cmd }
                 </step>
-            } must produce(
+            } must produce {
                 <li class="li step step--optional">
                     <span class="ph cmd"> ... </span>
                 </li>
-            )
+            }
         }
 
         "required" in {
@@ -72,19 +72,19 @@ class TaskElements extends Html5Specification {
                 <step importance="required">
                     { cmd }
                 </step>
-            } must produce(
+            } must produce {
                 <li class="li step step--required">
                     <span class="ph cmd"> ... </span>
                 </li>
-            )
+            }
         }
     }
 
     "Step section" >> {
         applying {
             <stepsection> ... </stepsection>
-        } must produce(
+        } must produce {
             <li class="li stepsection"> ... </li>
-        )
+        }
     }
 }
