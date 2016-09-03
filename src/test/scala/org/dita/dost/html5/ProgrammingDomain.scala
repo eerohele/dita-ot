@@ -13,11 +13,11 @@ class ProgrammingDomain extends Html5Specification {
 
     "Code block" >> {
         applying {
-            <codeblock outputclass="haskell">
+            <codeblock outputclass="javascript">
                 foo.bar()
             </codeblock>
         } must produce {
-            <pre class="codeblock haskell">
+            <pre class="codeblock javascript">
                 <code>
                     foo.bar()
                 </code>
