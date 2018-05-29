@@ -8,7 +8,7 @@ import java.io.File
 
 abstract class Html5Specification extends Specification with XsltSpecification {
     val stylesheet = XSLT.file(
-        new java.io.File(
+        new File(
             System.getProperty("plugins.html5.dir"), "xsl/dita2html5Impl.xsl"
         )
     )
