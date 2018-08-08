@@ -274,7 +274,7 @@ See the accompanying LICENSE file for applicable license.
     <xsl:param name="previous" select="()"/>
     <xsl:param name="open-sequence" select="false()"/>
     <xsl:variable name="next" select="following-sibling::*[contains(@class,' topic/copyryear ')][1]"/>
-    <xsl:variable name="begin-sequence" select="@year + 1 = number($next/@year)"/>
+    <xsl:variable name="begin-sequence" select="number(@year) + 1 = number($next/@year)"/>
     <xsl:choose>
       <xsl:when test="$begin-sequence">
         <xsl:if test="not($open-sequence)">
